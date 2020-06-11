@@ -1,7 +1,6 @@
 <template>
   <div class="layout">
-    <p>store:{{show}}</p>
-    <van-button type="primary" @click="changeStore()">切换</van-button>
+    <div class="div"></div>
   </div>
 </template>
 <script>
@@ -9,33 +8,36 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      isLoading: false
     };
   },
   computed: {
-    ...mapState({
-      show: state => state.dialog.show
+  },
+  mounted() {
+    console.log(this.$utils.getViewportSize())
+
+    // get 请求
+    this.$http('/api/user','get',{id:1}).then(res=>{
+      console.log(res)
+    }).catch(error=>{
+      // 服务器响应 500
+      console.log(error)
+    })
+    // post请求示例
+    this.$http('/user/add','post',{id:1}).then(res=>{
+      console.log(res)
+    }).catch(error=>{
+      // 服务器响应 500
+      console.log(error)
     })
   },
-  mounted() {},
   methods: {
-    changeStore() {
-      console.log(this.$store.state.dialog.show);
-      this.$store.dispatch("switch_dialog");
-    }
   }
 };
 </script>
-<style scoped lang='less'>
-.con {
-  overflow: hidden;
-}
-.layout {
-  height: 1000/3px;
-}
-
-p {
-  transform: scale(1);
-  font-size: 16px;
+<style scoped>
+.div{
+  width: 1rem;
+  height: 1rem;
+  border: 0.01rem solid #ccc;
 }
 </style>

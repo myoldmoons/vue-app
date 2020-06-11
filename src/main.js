@@ -7,19 +7,14 @@ import 'vant/lib/index.css';
 Vue.use(Vant);
 import vuex from 'vuex'
 Vue.use(vuex);
-
-import ViewUI from 'view-design';
-import 'view-design/dist/styles/iview.css';
-
-Vue.use(ViewUI);
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-
-Vue.use(ElementUI);
+import utils from './utils/utils'
+Vue.prototype.$utils=utils;
+import http from'./utils/http'
+Vue.prototype.$http=http;
 
 // 引入rem
-import './kits/rem'
-// common  style
+import './utils/rem'
+// 公共  style
 import './assets/common.css'
 
 
