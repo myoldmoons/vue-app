@@ -46,6 +46,11 @@ module.exports = {
     // 它支持webPack-dev-server的所有选项
 
     devServer: {
+        // overlay: {
+        //     warnings: false,
+        //     errors: false
+        // },
+        // lintOnSave: false,
         port: 8085, // 端口号
         host: '0.0.0.0',
         https: false, // https:{type:Boolean}
