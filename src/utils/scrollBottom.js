@@ -4,7 +4,6 @@ let loading=false;
  * @param callback 触底回掉函数
  */
 const scrollBottom =(callback)=>{
-    console.log(loading)
     let t=document.documentElement.scrollTop;
     let h=document.documentElement.clientHeight;
     let v=document.body.scrollHeight;
@@ -13,7 +12,6 @@ const scrollBottom =(callback)=>{
         callback().then(()=>{
             loading=false;
         })
-        console.log('bottom')
     }
 }
 /**
