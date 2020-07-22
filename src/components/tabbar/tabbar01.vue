@@ -26,8 +26,8 @@
         },
         computed: {
             ...mapState({
-                is_login: state=>state.user.is_login,
-                count:state=>state.car.count
+                is_login: state => state.user.is_login,
+                count: state => state.car.count
             })
         },
         watch: {

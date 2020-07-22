@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import vueX from 'vuex'
+
 Vue.use(vueX);
 
 const user = {
@@ -22,12 +23,12 @@ const user = {
         },
     }
 }
-const car ={
-    state:{
-        count:1
+const car = {
+    state: {
+        count: 1
     },
     mutations: {
-        add_count(state){
+        add_count(state) {
             state.count++;
         },
     }
@@ -36,6 +37,6 @@ const car ={
 export default new vueX.Store({
     modules: {
         user: user,
-        car:car
+        car: car
     }
 })

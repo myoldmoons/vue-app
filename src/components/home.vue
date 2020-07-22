@@ -1,22 +1,19 @@
 <template>
-  <div class="con">
-    <main>
-      <router-view></router-view>
-    </main>
+    <div class="con">
+        <main>
+            <router-view/>
+        </main>
 
-  </div>
+    </div>
 </template>
 <script>
-export default {
-  data() {
-    return {
+    export default {
+        data() {
+            return {};
+        },
+        watch: {},
+        methods: {}
     };
-  },
-  watch: {
-  },
-  methods: {
-  }
-};
 </script>
 <style scoped>
 </style>

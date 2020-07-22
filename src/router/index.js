@@ -28,7 +28,7 @@ export default new Router({
                     meta: {
                         type: 1
                     },
-                    component: resolve=>require(['../components/tabbar/tabbar02'],resolve)
+                    component: resolve => require(['../components/tabbar/tabbar02'], resolve)
                 }
             ]
         }

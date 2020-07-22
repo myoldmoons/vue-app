@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Children :data="[1,2,3,4]" v-on:sendItem="sendItem" />
+        <Children :data="[1,2,3,4]" v-on:sendItem="sendItem"/>
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <rect width="300" height="100"
                   style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>
@@ -38,12 +38,13 @@
 <script>
     import {debug} from '../../utils/debug';
     import Children from '../children/children';
+
     const log = debug('home');
     const _log = debug('mine');
     log('test home log');
     _log('test mine log');
     export default {
-        components:{
+        components: {
             Children,
         },
         data() {
@@ -61,8 +62,8 @@
             }, 25)
         },
         methods: {
-            sendItem(i){
-                console.log(i,'子组件传来的')
+            sendItem(i) {
+                console.log(i, '子组件传来的')
             },
             say() {
                 alert(1)
