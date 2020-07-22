@@ -19,5 +19,6 @@ export default {
   color: #2c3e50;
   max-width: 750px;
   margin: 0 auto;
+  font-size: 0.16rem;
 }
 </style>

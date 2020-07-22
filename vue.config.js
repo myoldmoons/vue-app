@@ -1,7 +1,20 @@
-// vue.config.js 配置说明
-// 这里只列一部分，具体配置惨考文档啊
+// vue.config.js
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     publicPath: './',
+    configureWebpack: {
+        output: {
+            // 输出重构  打包编译后的 文件名称  【模块名称.版本号.js】
+            filename: `js/[name].js`,
+            chunkFilename: `js/[name].js`
+        },
+        plugins: [
+            new MiniCssExtractPlugin({
+                filename: `css/[name].css`,
+                chunkFilename: `css/[name].css`
+            })
+        ]
+    },
     // baseUrl  type:{string} default:'/' 
     // baseUrl: 'http://192.168.11.53',
     // 将部署应用程序的基本URL

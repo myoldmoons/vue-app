@@ -1,6 +1,9 @@
 <template>
-    <div class="con">
-        <input type="number" v-model="value"/>
+    <div>
+        <div class="con">
+            red
+            <p>green</p>
+        </div>
         <ul>
             <li v-for="item in num">{{item}}</li>
         </ul>
@@ -9,10 +12,10 @@
 
 
 <script>
+    import {registerAddEventListener,removeEventListener} from '../../utils/scrollBottom'
     export default {
         data() {
             return {
-                value: "",
                 num: 40
             };
         },
@@ -22,23 +25,35 @@
             }
         },
         mounted() {
-           this.$page.registerAddEventListener(this.loads)
+           registerAddEventListener(this.loads)
         },
         destroyed() {
-            this.$page.removeEventListener();
+            removeEventListener();
         },
         methods: {
-
-
-            async loads() {
+            loads() {
                 console.log('ajax')
-                this.$http.get('http://www.baidu.com').then(res=>{
-                }).catch(error=>{
-                    this.num+=30;
-                })
+                return new Promise(((resolve,reject)=>{
+                    this.$http.get('http://www.baidu.com').then(res=>{
+
+                    }).catch(error=>{
+                        this.num+=30;
+                        if(this.num===100){
+                            reject()
+                        }else{
+                            resolve()
+                        }
+                    })
+                }))
             }
         }
     };
 </script>
-<style scoped>
+<style scoped lang="scss">
+    .con{
+        color: red;
+        p{
+            color: green;
+        }
+    }
 </style>
