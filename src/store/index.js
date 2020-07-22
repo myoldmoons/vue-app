@@ -2,31 +2,40 @@ import Vue from 'vue'
 import vueX from 'vuex'
 Vue.use(vueX);
 
-const dialog_store = {
+const user = {
     state: {
-        show: false
+        is_login: false
     },
     getters: {
-        not_show(state) { //这里的state对应着上面这个state
-            return !state.show;
+        not_login(state) {
+            return !state.is_login;
         }
     },
     mutations: {
-        switch_dialog(state) { //这里的state对应着上面这个state
-            state.show = state.show ? false : true;
-            //你还可以在这里执行其他的操作改变state
+        switch_login(state) { //这里的state对应着上面这个state
+            state.is_login = !state.is_login;
         }
     },
     actions: {
-        switch_dialog(context) { //这里的context和我们使用的$store拥有相同的对象和方法
+        switch_login(context) { //这里的context和我们使用的$store拥有相同的对象和方法
             context.commit('switch_dialog');
-            //你还可以在这里触发其他的mutations方法
+        },
+    }
+}
+const car ={
+    state:{
+        count:1
+    },
+    mutations: {
+        add_count(state){
+            state.count++;
         },
     }
 }
 
 export default new vueX.Store({
     modules: {
-        dialog: dialog_store
+        user: user,
+        car:car
     }
 })

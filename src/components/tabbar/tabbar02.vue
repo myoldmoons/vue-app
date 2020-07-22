@@ -1,9 +1,6 @@
 <template>
     <div>
-        {{JSON.stringify(activeId)}}
-        <div v-for="item in list" @click="clickTank(item)" :key="item.id"
-             :class="activeId.has(item.id)===true?'active':''">{{item.tankName}}
-        </div>
+        <Children :data="[1,2,3,4]" v-on:sendItem="sendItem" />
         <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
             <rect width="300" height="100"
                   style="fill:rgb(0,0,255);stroke-width:1;stroke:rgb(0,0,0)"/>
@@ -39,44 +36,23 @@
     </div>
 </template>
 <script>
-    import {debug} from '../../utils/debug'
-
+    import {debug} from '../../utils/debug';
+    import Children from '../children/children';
     const log = debug('home');
     const _log = debug('mine');
     log('test home log');
     _log('test mine log');
     export default {
+        components:{
+            Children,
+        },
         data() {
             return {
                 x: 0,
                 show: true,
-                list: [
-                    {
-                        id: 1,
-                        tankName: "一吨罐"
-                    },
-                    {
-                        id: 2,
-                        tankName: "二吨罐"
-                    },
-                    {
-                        id: 3,
-                        tankName: "三吨罐"
-                    },
-                    {
-                        id: 4,
-                        tankName: "四吨罐"
-                    },
-                    {
-                        id: 5,
-                        tankName: "五吨罐",
-                    }
-                ],
-                activeId: null
             }
         },
         created() {
-            this.activeId=new Set([])
         },
         mounted() {
             let timer = setInterval(() => {
@@ -85,18 +61,11 @@
             }, 25)
         },
         methods: {
+            sendItem(i){
+                console.log(i,'子组件传来的')
+            },
             say() {
                 alert(1)
-            },
-            clickTank(item) {
-                console.log(item.id)
-                if (!this.activeId.has(item.id)) {
-                    this.activeId.add(item.id)
-                    console.log(this.activeId)
-                } else {
-                    this.activeId.delete(item.id)
-                    console.log(this.activeId)
-                }
             },
             closeBefore(action, done) {
                 if (action === 'confirm') {
