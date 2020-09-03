@@ -7,9 +7,32 @@
             <button @click="switch_login">login-click</button>
             <button @click="add_count">car-click</button>
         </div>
-        <ul>
-            <li v-for="item in num">{{item}}</li>
-        </ul>
+        <!--        <ul>-->
+        <!--            <li v-for="item in num">{{item}}</li>-->
+        <!--        </ul>-->
+        <div class="warp">
+            <p>瀑布流</p>
+            <ul>
+                <li class="item">
+                    <ul>
+                        <li v-for="item in column1_list">
+                            <div>
+                                <span v-for="item in parseInt(Math.random()*10+2+'')">测试</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="item">
+                    <ul>
+                        <li v-for="item in column2_list">
+                            <div>
+                                <span v-for="item in parseInt(Math.random()*10+2+'')">测试</span>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -21,7 +44,8 @@
     export default {
         data() {
             return {
-                num: 40
+                column1_list: 10,
+                column2_list: 10,
             };
         },
         computed: {
@@ -49,16 +73,11 @@
             loads() {
                 console.log('ajax')
                 return new Promise(((resolve, reject) => {
-                    this.$http.get('http://www.baidu.com').then(res => {
-
-                    }).catch(error => {
-                        this.num += 30;
-                        if (this.num === 100) {
-                            reject()
-                        } else {
-                            resolve()
-                        }
-                    })
+                    setTimeout(()=>{
+                        this.column1_list+=10;
+                        this.column2_list+=10;
+                        resolve();
+                    },300)
                 }))
             }
         }
@@ -70,6 +89,39 @@
 
         p {
             color: green;
+        }
+    }
+
+    .warp {
+        background-color: #f6f6f6;
+
+        & > ul {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5px;
+
+            li.item {
+                width: 50%;
+                box-sizing: border-box;
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+
+                    li {
+                        padding: 5px;
+
+                        div {
+                            background-color: #fff;
+                            padding: 10px;
+                            border-radius: 5px;
+                            text-align: left;
+                            font-size: 14px;
+                            letter-spacing: 10px;
+                        }
+                    }
+                }
+            }
         }
     }
 </style>

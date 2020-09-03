@@ -1,4 +1,7 @@
 module.exports={
+    // development,
+    // production
+    mode: 'production',
     rules:[
         {
             test:/\.scss$/,

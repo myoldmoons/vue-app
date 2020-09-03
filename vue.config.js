@@ -1,5 +1,6 @@
-// vue.config.js
+// vue.config.js 配置说明
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// 这里只列一部分，具体配置惨考文档啊
 module.exports = {
     publicPath: './',
     configureWebpack: {
